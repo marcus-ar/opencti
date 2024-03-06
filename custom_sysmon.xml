@@ -1,0 +1,75 @@
+<group name="windows,sysmon,">
+  <rule id="61603" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^1$</field>
+    <description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
+    <options>no_full_log</options>
+    <group>sysmon_event1,</group>
+  </rule>
+
+   <rule id="61605" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^3$</field>
+    <field name="win.eventdata.destinationIp" negate="yes">0:0:0:0:0:0:0:1</field>
+    <description>Sysmon - Event 3: Network connection to $(win.eventdata.destinationIp):$(win.eventdata.destinationPort) by $(win.eventdata.image)</description>
+    <options>no_full_log</options>
+    <group>sysmon_event3,</group>
+  </rule>
+
+  <rule id="61608" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^6$</field>
+    <description>Sysmon - Event 6: Driver loaded $(win.eventdata.imageLoaded)</description>
+    <options>no_full_log</options>
+    <group>sysmon_event6,</group>
+  </rule>
+
+  <rule id="61609" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^7$</field>
+    <description>Sysmon - Event 7: Image $(win.eventdata.imageLoaded) loaded by $(win.eventdata.image)</description>
+    <options>no_full_log</options>
+    <group>sysmon_event7,</group>
+  </rule>
+
+  <rule id="61617" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^15$</field>
+    <description>Sysmon - Event 15: $(win.eventdata.targetFilename) FileCreateStreamHash by process $(win.eventdata.image)</description>
+    <options>no_full_log</options>
+    <group>sysmon_event_15,</group>
+  </rule>
+
+  <rule id="61650" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^22$</field>
+    <description>Sysmon - Event 22: DNS Query event</description>
+    <options>no_full_log</options>
+    <group>sysmon_event_22,</group>
+  </rule>
+
+  <rule id="61651" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^23$</field>
+    <description>Sysmon - Event 23: File deleted and archived</description>
+    <options>no_full_log</options>
+    <group>sysmon_event_23,</group>
+  </rule>
+
+  <rule id="61652" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^24$</field>
+    <description>Sysmon - Event 24: Clipboard change</description>
+    <options>no_full_log</options>
+    <group>sysmon_event_24,</group>
+  </rule>
+
+  <rule id="61653" level="3" overwrite="yes">
+    <if_sid>61600</if_sid>
+    <field name="win.system.eventID">^25$</field>
+    <description>Sysmon - Event 25: Process tampering - Image change</description>
+    <options>no_full_log</options>
+    <group>sysmon_event_25,</group>
+  </rule>
+
+</group>
